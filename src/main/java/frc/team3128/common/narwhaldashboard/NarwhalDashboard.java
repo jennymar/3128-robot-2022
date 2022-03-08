@@ -173,12 +173,9 @@ public class NarwhalDashboard extends WebSocketServer {
                         // get value from Field
                         Object value = field.get(null);
                         JSONObject newConstant = new JSONObject();
-                        newConstant.put("name", field.getName());
+                        newConstant.put("key", field.getName());
                         newConstant.put("value", value);
-                        
-                        String fieldType = field.getType().toString();
-                        newConstant.put("type", fieldType.substring(fieldType.indexOf(".")+1));
-
+    
                         catArr.add(newConstant);
                         Log.info("Narwhal Dashboard", "Constant Of "+newConstant.toJSONString());
                         }

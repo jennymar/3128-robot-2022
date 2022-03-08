@@ -24,6 +24,7 @@ public class ConstantsInt extends Constants {
     public static class ClimberConstants extends Constants.ClimberConstants {}
     public static class ShooterConstants extends Constants.ShooterConstants {
         public static int PLATEAU_COUNT;
+        public static double RPM_THRESHOLD_PERCENT_MAX;
     }
     public static class HopperConstants extends Constants.HopperConstants {}
     public static class IntakeConstants extends Constants.IntakeConstants {}
