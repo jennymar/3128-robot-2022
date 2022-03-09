@@ -40,6 +40,7 @@ public class RobotContainer {
 
     private NAR_Drivetrain m_drive;
     private Shooter m_shooter;
+    private TestShooter m_testShooter;
     // private Intake m_intake;   
     private Hopper m_hopper;
     // private Climber m_climber;
@@ -72,12 +73,14 @@ public class RobotContainer {
         ConstantsInt.initTempConstants();
         m_drive = NAR_Drivetrain.getInstance();
         m_shooter = Shooter.getInstance();
+        m_testShooter = TestShooter.getInstance();
         // m_intake = Intake.getInstance();
         m_hopper = Hopper.getInstance();
         // m_climber = Climber.getInstance();
 
         //Enable all PIDSubsystems so that useOutput runs
         m_shooter.enable();
+        m_testShooter.enable();
 
         m_leftStick = new NAR_Joystick(0);
         m_rightStick = new NAR_Joystick(1);
@@ -132,6 +135,7 @@ public class RobotContainer {
         m_rightStick.getButton(1).whenPressed(shootCommand)
                                 .whenReleased(new ParallelCommandGroup(new InstantCommand(m_shooter::stopShoot, m_shooter)/*, new InstantCommand(m_shooterLimelight::turnLEDOff)*/));
 
+        
         // m_rightStick.getButton(2).whenHeld(new CmdExtendIntakeAndRun(m_intake, m_hopper));
         
         // m_rightStick.getButton(3).whenHeld(new ParallelCommandGroup(

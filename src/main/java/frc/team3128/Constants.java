@@ -106,7 +106,7 @@ public class Constants {
 
     public static class ShooterConstants {
 
-        public static final int LEFT_SHOOTER_ID = 4; 
+        public static final int LEFT_SHOOTER_ID = 13; 
         public static final int RIGHT_SHOOTER_ID = 5; 
 
         public static final double LOW_kP = 0; //1.24e-6;//0.21576; // 1.24e-3;
@@ -117,9 +117,14 @@ public class Constants {
         public static final double HIGH_kI = 0;
         public static final double HIGH_kD = 0;
 
-        public static final double SHOOTER_KS = 0.2; // 0.711; //Static gain in PID Feed Forward
-        public static final double SHOOTER_KV = 0.0017857; // 0.00163; //Velocity gain in PID Feed Forward
-        public static final double SHOOTER_KA = 0.0053359; // 0.0349; //Acceleration gain PID Feed Forward
+        public static final double LOW_kS = 0.2; // 0.711; //Static gain in PID Feed Forward
+        public static final double LOW_kV = 0.0017857 * 0.9; // 0.00163; //Velocity gain in PID Feed Forward
+        public static final double LOW_kA = 0.0053359 * 0.9; // 0.0349; //Acceleration gain PID Feed Forward
+
+        public static final double HIGH_kS = 0.2;//* 0.925; //Static gain in PID Feed Forward
+        public static final double HIGH_kV = 0.0017857;//* 0.97; //Velocity gain in PID Feed Forward
+        public static final double HIGH_kA = 0.0053359;//* 0.99; //Acceleration gain PID Feed Forward
+
 
         public static final int PLATEAU_COUNT = 1;
         public static final double RPM_THRESHOLD_PERCENT = 0.05;
@@ -128,8 +133,8 @@ public class Constants {
 
         public static final LinearSystem<N1, N1, N1> SHOOTER_CHAR = 
         LinearSystemId.identifyVelocitySystem(
-            SHOOTER_KV, 
-            SHOOTER_KA
+            LOW_kV, 
+            LOW_kA
         );
         public static final double SHOOTER_RADIUS_METERS = 0.0508;
         public static final DCMotor SHOOTER_GEARBOX = DCMotor.getCIM(2);
